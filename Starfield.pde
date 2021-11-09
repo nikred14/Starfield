@@ -49,7 +49,7 @@ void draw() {
     }
 
     for (int i = 1; i<numPinks; i++) {//Pinks
-      if (bob[i].mySize > 50) {
+      if (bob[i].mySize > 25) {
         hyperionHits[(i-1)+2*(i-1)] = 11;
         hyperionHits[(i)+2*(i-1)] = (int) bob[i].myX;
         hyperionHits[(i+1)+2*(i-1)] = (int) bob[i].myY;
@@ -139,7 +139,7 @@ class Pink extends Particle {
   Pink() {
     myColor = color(255, 150, 200);
     myAngle = Math.random()*PI/2 + PI/4;
-    mySpeed = Math.random()*speedRate*2+2;
+    mySpeed = Math.random()*speedRate+1;
     mySpeedO=mySpeed;
     forwardSpeed = (float)(Math.random()*5+5);
     mySize = 1;
@@ -229,7 +229,7 @@ class Spaceship extends Particle {
   Spaceship(int x, int y) {
     myColor = color(130, 143, 114);
     myAngle = Math.random()*2*PI;
-    mySpeed = 10;
+    mySpeed = 5;
     mySpeedO = mySpeed;
     myX = x;
     myY = y;
