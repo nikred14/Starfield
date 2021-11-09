@@ -1,5 +1,7 @@
-double sizeX = 1600.0;
-double sizeY = 1200.0;
+//Hyperion is the ship the player is in
+
+double sizeX = 800.0;
+double sizeY = 600.0;
 Particle [] bob = new Particle [100];
 int speedRate = 1;
 int hits = 2;
@@ -14,7 +16,7 @@ int numPinks = 3;
 int [] hyperionHits = new int [(numPinks-1)*3];
 
 void setup() {
-  size(1600, 1200);
+  size(800, 600);
   for (int i = 0; i<1; i++) {
     bob[i] = new Spaceship((int)(Math.random()*(sizeX-500))+100, (int)(Math.random()*(sizeY-600))+100);
   }
@@ -31,8 +33,8 @@ void setup() {
 void draw() {
   background(0);
   fill(255);
-  textSize(75);
-  text("Ships Destroyed: " + destroyedShips, 25, 75);
+  textSize(30);
+  text("Ships Destroyed: " + destroyedShips, 5, 30);
   for (int j = 0; j<10; j++) {
     for (int i = numPinks; i<bob.length; i++) {//Particles 
       bob[i].move();
@@ -180,13 +182,13 @@ void crosshair() {
   if (postExplosionTimer > 0) {
     noStroke();
     fill(254, 222, 23, postExplosionTimer*50);
-    ellipse(mouseX, mouseY, 100, 100);
+    ellipse(mouseX, mouseY, 50, 50);
     postExplosionTimer --;
   }
   if (postHitTimer > 0) {
     noStroke();
     fill(255, 75, 43, postHitTimer * 50);
-    ellipse(mouseX, mouseY, 25, 25);
+    ellipse(mouseX, mouseY, 12, 12);
     postHitTimer --;
   }
 }
@@ -195,7 +197,7 @@ void hyperionHit() {
   for (int i = 0; i<hyperionHits.length-2; i+=3) {
     noStroke();
     fill(255, 75, 43, hyperionHits[i] * 25);
-    ellipse(hyperionHits[i+1], hyperionHits[i+2], 400, 400);
+    ellipse(hyperionHits[i+1], hyperionHits[i+2], 200, 200);
     hyperionHits[i]=hyperionHits[i]-1; 
   }
 }
@@ -231,7 +233,7 @@ class Spaceship extends Particle {
     mySpeedO = mySpeed;
     myX = x;
     myY = y;
-    mySize = 50;
+    mySize = 25;
   }
   void move() {
     double k = 1.07;
